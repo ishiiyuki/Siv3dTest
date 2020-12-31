@@ -7,6 +7,12 @@ class Enemy
 
 private:
 
+	double mySpeed = 100.0;
+
+	Texture myTexture;
+
+	Vec2 myPos;
+
 public:
 
 	Enemy();

@@ -6,7 +6,7 @@ GameMain::GameMain()
 	// 背景のいろ
 	Scene::SetBackground(ColorF(0.1, 0.2, 0.7));
 
-	font = Font(60);
+	font = Font(30);
 
 	cat = Texture(Emoji(U"🐈"));
 
@@ -19,7 +19,7 @@ GameMain::GameMain()
 void GameMain::GameUpdate()
 {
 
-
+	const double deltaTime = Scene::DeltaTime();
 
 
 

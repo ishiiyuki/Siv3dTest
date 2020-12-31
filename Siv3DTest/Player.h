@@ -7,19 +7,23 @@ class Player
 
 private:
 
-	double playerSpeed = 55.0;
+	double mySpeed = 55.0;
 
-	Vec2 playerPos;
+	Vec2 myPos;
 
-	Texture playerTexture;
-
-	Array<Vec2>playerBullets;
+	Texture myTexture;
 
 
 public:
 
 	Player();
 	~Player();
+
+	//ˆÚ“®
+	void Move();
+
+	//ƒVƒ‡ƒbƒg
+	void Shot();
 
 };
 
