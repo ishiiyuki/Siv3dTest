@@ -1,6 +1,5 @@
 ﻿#pragma once
-#include<initializer_list>
-
+//#include<initializer_list>
 # include <Siv3D.hpp> // OpenSiv3D v0.4.3
 
 #include "Enemy.h"
@@ -17,11 +16,6 @@ private:
 
 	// 大きさ 60 のフォントを用意
 	Font font;
-
-	// 猫のテクスチャを用意
-	Texture cat;
-	// 猫の座標
-	Vec2 catPos;
 
 	// 敵の発生間隔の初期値（秒）
 	double initialEnemySpawnTime = 2.0;
@@ -43,7 +37,16 @@ private:
 
 	Array<EnemyBullet> gameEnemyBullet;
 
+	
+	// 自機ショットのクールタイム（秒）
+	double playerShotCoolTime = 0.1;
+	// 自機ショットのクールタイムタイマー
+	double playerShotTimer = 0.0;
 
+	// 敵ショットのクールタイム（秒）
+	double enemyShotCoolTime = 0.90;
+	// 敵ショットのクールタイムタイマー
+	double enemyShotTimer = 0.0;
 
 
 	// ハイスコア
@@ -66,7 +69,9 @@ public:
 
 	void GameUpdate();
 
-	
+
+	//敵のランダム配置
+	Enemy GenerateEnemy();
 
 
 };

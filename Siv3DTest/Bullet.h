@@ -5,20 +5,25 @@ class Bullet
 {
 
 private:
-	Vec2 Pos;
 
-	double Speed;
-	
-	double SpawnTime;
+protected:
+	Vec2 pos;
 
-	double ShotCoolTime;
+	double speed;
 
-	double ShotTimer = 0.0;
+	double spawnTime;
+
+
+
 public:
 
 
-	Bullet();
-	~Bullet();
+	Bullet() {
+
+	}
+	~Bullet() {
+
+	}
 
 };
 

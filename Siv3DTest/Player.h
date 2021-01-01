@@ -1,17 +1,19 @@
 #pragma once
 
 # include <Siv3D.hpp> // OpenSiv3D v0.4.3
-class Player
+# include"Unit.h"
+class Player :
+	public Unit
 {
 
 
 private:
 
-	double mySpeed = 55.0;
+	//double mySpeed = 55.0;
 
-	Vec2 myPos;
+	//Vec2 myPos;
 
-	Texture myTexture;
+	//Texture myTexture;
 
 
 public:

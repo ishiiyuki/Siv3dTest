@@ -8,7 +8,11 @@ private:
 
 public:
 
-    EnemyBullet();
-    ~EnemyBullet();
+    EnemyBullet() {
+
+    }
+    ~EnemyBullet() {
+
+    }
 };
 

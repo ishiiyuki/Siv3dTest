@@ -2,9 +2,9 @@
 
 Player::Player()
 {
-	myPos = Vec2(400,500);
+	pos = Vec2(400,500);
 
-	myTexture = Texture(Emoji(U"🤖"));
+	texture = Texture(Emoji(U"🤖"));
 }
 
 Player::~Player()

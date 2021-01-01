@@ -7,7 +7,11 @@ private:
 
 public:
 
-    PlayerBullet();
-    ~PlayerBullet();
+    PlayerBullet() {
+
+    }
+    ~PlayerBullet() {
+
+    }
 };
 

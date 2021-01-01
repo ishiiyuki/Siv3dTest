@@ -8,20 +8,45 @@ GameMain::GameMain()
 
 	font = Font(30);
 
-	cat = Texture(Emoji(U"🐈"));
 
-	catPos = Vec2(640, 450);
+    //
 
 }
-
-
 
 void GameMain::GameUpdate()
 {
 
-	const double deltaTime = Scene::DeltaTime();
+    const double deltaTime = Scene::DeltaTime();
+    enemySpawnTimer += deltaTime;
+    //プレイヤーのショットタイム周り
+    playerShotTimer = Min(playerShotTimer + deltaTime, playerShotCoolTime);
+    enemyShotTimer += deltaTime;
+
+    // 敵の発生
+    while (enemySpawnTimer > enemySpawnTime)
+    {
+        enemySpawnTimer -= enemySpawnTime;
+        enemySpawnTime = Max(enemySpawnTime * 0.95, 0.3);
+        gameEnemys << GenerateEnemy();
+    }
 
 
 
 
+
+    //敵の移動と描画
+    for (auto& enemy : gameEnemys)
+    {
+        enemy.Update(deltaTime);
+        enemy.Draw();
+    }
+
+
+}
+
+
+Enemy GameMain::GenerateEnemy()
+{
+    Enemy set;
+    return set;
 }
