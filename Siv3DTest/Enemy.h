@@ -11,16 +11,13 @@ private:
 
 	double mySpeed = 100.0;
 
-	
-
-	
 
 public:
 
 	Enemy();
 	~Enemy();
 
-	void Update(double deltaTime);
+	void Update(double deltaTime, bool& gameover);
 
 	void Draw();
 

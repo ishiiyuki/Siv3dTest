@@ -37,7 +37,7 @@ private:
 
 	Array<EnemyBullet> gameEnemyBullet;
 
-	
+
 	// 自機ショットのクールタイム（秒）
 	double playerShotCoolTime = 0.1;
 	// 自機ショットのクールタイムタイマー

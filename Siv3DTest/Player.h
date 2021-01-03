@@ -9,11 +9,7 @@ class Player :
 
 private:
 
-	//double mySpeed = 55.0;
-
-	//Vec2 myPos;
-
-	//Texture myTexture;
+	double mySpeed = 550.0;
 
 
 public:
@@ -21,8 +17,9 @@ public:
 	Player();
 	~Player();
 
-	//ˆÚ“®
-	void Move();
+	void Update(double deltaTime);
+
+	void Draw();
 
 	//ƒVƒ‡ƒbƒg
 	void Shot();

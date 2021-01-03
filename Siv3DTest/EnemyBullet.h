@@ -8,11 +8,21 @@ private:
 
 public:
 
-    EnemyBullet() {
-
+    EnemyBullet(Vec2 setPos) {
+        pos = setPos;
+        speed = 300.0;
     }
     ~EnemyBullet() {
 
     }
+
+    bool BulletEnd() const {
+        return pos.y > 700;
+    }
+
+
+    void Update(double deltaTime);
+
+    void Draw();
 };
 
