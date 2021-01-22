@@ -28,3 +28,12 @@ void Player::Draw()
 	// 自機の描画
 	texture.resized(80).flipped().drawAt(pos);
 }
+
+bool Player::MyHitCheck(Vec2 enemyBulletPos)
+{
+	if (enemyBulletPos.distanceFrom(pos) <= 20)
+	{
+		return true;
+	}
+	return false;
+}

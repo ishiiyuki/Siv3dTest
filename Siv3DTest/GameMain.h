@@ -16,6 +16,7 @@ private:
 
 	// 大きさ 60 のフォントを用意
 	Font font;
+	Font gameoverfont;
 
 	// 敵の発生間隔の初期値（秒）
 	double initialEnemySpawnTime = 2.0;
@@ -56,8 +57,6 @@ private:
 
 public:
 
-
-
 	GameMain();
 
 	~GameMain()
@@ -65,9 +64,10 @@ public:
 
 	}
 
-
-
+	//ゲームのメインループ
 	void GameUpdate();
+	//ゲームの描画処理
+	void GameDrow(const double _time);
 
 
 	//敵のランダム配置

@@ -25,5 +25,20 @@ public:
 
 	}
 
+	Vec2 GetPos()
+	{
+		return pos;
+	}
+
+	virtual void Update(double deltaTime)
+	{
+
+	}
+
+	virtual void Draw()
+	{
+
+	}
+
 };
 

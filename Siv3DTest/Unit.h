@@ -10,8 +10,18 @@ public:
 
 	Texture texture;
 
-	//double shotCoolTime;
+public:
 
-	//double shotTimer = 0.0;
+	Unit()
+	{
+	}
+
+	~Unit()
+	{
+
+
+	}
+
+	bool MyHitCheck(Vec2 _bulletPos, double _r = 40);
 };
 

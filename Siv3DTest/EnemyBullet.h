@@ -23,6 +23,7 @@ public:
 
     void Update(double deltaTime);
 
-    void Draw();
+    virtual void Draw();
+
 };
 

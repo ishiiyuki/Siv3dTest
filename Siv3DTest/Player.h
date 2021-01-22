@@ -24,5 +24,7 @@ public:
 	//ƒVƒ‡ƒbƒg
 	void Shot();
 
+	bool MyHitCheck(Vec2 enemyBulletPos);
+
 };
 
