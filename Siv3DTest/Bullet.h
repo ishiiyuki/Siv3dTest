@@ -30,15 +30,9 @@ public:
 		return pos;
 	}
 
-	virtual void Update(double deltaTime)
-	{
+	virtual void Update(double deltaTime) = 0;
 
-	}
-
-	virtual void Draw()
-	{
-
-	}
+	virtual void Draw() = 0;
 
 };
 

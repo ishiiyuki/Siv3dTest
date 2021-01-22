@@ -21,9 +21,9 @@ public:
     }
 
 
-    void Update(double deltaTime);
+    void Update(double deltaTime) ;
 
-    virtual void Draw();
+    void Draw() ;
 
 };
 

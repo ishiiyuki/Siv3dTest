@@ -20,8 +20,8 @@ public:
     }
 
 
-    void Update(double deltaTime);
+    void Update(double deltaTime) ;
 
-    void Draw();
+    void Draw() ;
 };
 
