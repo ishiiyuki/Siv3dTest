@@ -24,7 +24,7 @@ void Enemy::Update(double deltaTime, bool& gameover)
     if (pos.y > 700)
     {
         // 敵が画面外に出たらゲームオーバー
-        gameover = true;
+        //gameover = true;
     }
 	Draw();
 }
