@@ -123,6 +123,9 @@
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HomingBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -416,6 +419,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HomingBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

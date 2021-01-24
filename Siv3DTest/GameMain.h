@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "PlayerBullet.h"
 #include "EnemyBullet.h"
+#include "HomingBullet.h"
 
 class GameMain
 {
@@ -33,6 +34,8 @@ private:
 
 	Array<PlayerBullet> gamePlayerBullet;
 
+	Array<HomingBullet> gameHomingBullet;
+
 	//敵
 	Array<Enemy> gameEnemys;
 
@@ -40,9 +43,14 @@ private:
 
 
 	// 自機ショットのクールタイム（秒）
-	double playerShotCoolTime = 0.1;
+	double playerShotCoolTime = 0.5;
 	// 自機ショットのクールタイムタイマー
 	double playerShotTimer = 0.0;
+
+	// 自機ホーミングショットのクールタイム（秒）
+	double playerHomingShotCoolTime = 1.2;
+	// 自機ホーミングショットのクールタイムタイマー
+	double playerHomingShotTimer = 0.0;
 
 	// 敵ショットのクールタイム（秒）
 	double enemyShotCoolTime = 0.90;
@@ -78,6 +86,13 @@ public:
 
 	//敵のランダム配置
 	Enemy GenerateEnemy();
+
+	//一番近い敵を取得
+
+	Enemy NearEnemy();
+
+	double dist(Vec2 _SetPos, Vec2 _TargetPos);
+	double dist(double x1, double y1, double x2, double y2);
 
 
 };
