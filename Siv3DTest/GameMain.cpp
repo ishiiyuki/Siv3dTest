@@ -40,11 +40,50 @@ void GameMain::GameUpdate()
     }
 
     const double deltaTime = Scene::DeltaTime();
-    //プレイヤーのショットタイム周り
-    playerShotTimer = Min(playerShotTimer + deltaTime, playerShotCoolTime);
+    
+    // 敵の発生
+    while (enemySpawnTimer > enemySpawnTime)
+    {
+        enemySpawnTimer -= enemySpawnTime;
+        enemySpawnTime = Max(enemySpawnTime * 0.95, 0.3);
+        gameEnemys << GenerateEnemy();
+    }
 
-    enemyShotTimer += deltaTime;
-    enemySpawnTimer += deltaTime;
+    //攻撃のヒット判定
+    GameHitCheck(deltaTime);
+
+    //Shot周り
+    GameShotUpdate(deltaTime);
+
+    //移動
+    GameMoveUpdate(deltaTime);
+
+    //描画のみ
+    GameDrow(deltaTime);
+
+
+}
+
+void GameMain::GameMoveUpdate(const double _time)
+{
+    //自機の移動と描画
+    gamePlayer.Update(_time);
+
+    //敵の移動と描画
+    for (auto& enemy : gameEnemys)
+    {
+
+        enemy.Update(_time, gameover);
+    }
+}
+
+void GameMain::GameShotUpdate(const double _time)
+{
+    //プレイヤーのショットタイム周り
+    playerShotTimer = Min(playerShotTimer + _time, playerShotCoolTime);
+
+    enemyShotTimer += _time;
+    enemySpawnTimer += _time;
 
     // 敵ショットの発射
     if (enemyShotTimer >= enemyShotCoolTime)
@@ -60,11 +99,12 @@ void GameMain::GameUpdate()
     // 敵ショットの移動
     for (auto& enemyBullet : gameEnemyBullet)
     {
-        enemyBullet.Update(deltaTime);
+        enemyBullet.Update(_time);
 
     }
+
     // 画面外の敵ショットの削除
-    gameEnemyBullet.remove_if([](const EnemyBullet& e_b){return e_b.BulletEnd(); });
+    gameEnemyBullet.remove_if([](const EnemyBullet& e_b) {return e_b.BulletEnd(); });
 
     //自機ショット
             // 自機ショットの発射
@@ -76,29 +116,38 @@ void GameMain::GameUpdate()
 
     for (auto& playerBullet : gamePlayerBullet)
     {
-        playerBullet.Update(deltaTime);
+        playerBullet.Update(_time);
     }
 
     // 画面外の自機ショットの削除
     gamePlayerBullet.remove_if([](const PlayerBullet& p_b) {return p_b.BulletEnd(); });
 
 
-    // 敵の発生
-    while (enemySpawnTimer > enemySpawnTime)
+}
+
+void GameMain::GameDrow(const double _time)
+{
+    
+    // 背景のアニメーション
+    for (auto i : step(12))
     {
-        enemySpawnTimer -= enemySpawnTime;
-        enemySpawnTime = Max(enemySpawnTime * 0.95, 0.3);
-        gameEnemys << GenerateEnemy();
+        const double a = Periodic::Sine0_1(2s, Scene::Time() - (2.0 / 12 * i));
+        Rect(0, i * 50, 800, 50).draw(ColorF(1.0, a * 0.2));
     }
 
-    //攻撃のヒット判定-------------------------------------------------------
+    effect.update();
+}
+
+
+void GameMain::GameHitCheck(const double _time)
+{
 
     // 敵 vs 自機ショット
     for (auto itEnemy = gameEnemys.begin(); itEnemy != gameEnemys.end();)
     {
         bool skip = false;
 
-        for (auto itBullet =gamePlayerBullet.begin(); itBullet != gamePlayerBullet.end();)
+        for (auto itBullet = gamePlayerBullet.begin(); itBullet != gamePlayerBullet.end();)
         {
             if (itEnemy->MyHitCheck(itBullet->GetPos()))
             {
@@ -120,7 +169,7 @@ void GameMain::GameUpdate()
 
             ++itBullet;
         }
-        
+
         if (skip)
         {
             continue;
@@ -140,36 +189,6 @@ void GameMain::GameUpdate()
             break;
         }
     }
-
-
-    //描画と移動------------------------------------------------------------------------
-
-    //自機の移動と描画
-    gamePlayer.Update(deltaTime);
-
-    //敵の移動と描画
-    for (auto& enemy : gameEnemys)
-    {
-
-        enemy.Update(deltaTime, gameover);
-    }
-
-    //描画のみ
-    GameDrow(deltaTime);
-
-
-}
-
-void GameMain::GameDrow(const double _time)
-{
-    // 背景のアニメーション
-    for (auto i : step(12))
-    {
-        const double a = Periodic::Sine0_1(2s, Scene::Time() - (2.0 / 12 * i));
-        Rect(0, i * 50, 800, 50).draw(ColorF(1.0, a * 0.2));
-    }
-
-    effect.update();
 }
 
 Enemy GameMain::GenerateEnemy()

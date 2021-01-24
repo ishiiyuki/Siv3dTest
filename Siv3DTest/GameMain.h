@@ -66,9 +66,15 @@ public:
 
 	//ゲームのメインループ
 	void GameUpdate();
-	//ゲームの描画処理
+	//ショットの移動関係
+	void GameShotUpdate(const double _time);
+	//移動関係
+	void GameMoveUpdate(const double _time);
+	//ゲーム描画処理（背景やエフェクト)
 	void GameDrow(const double _time);
 
+	//ショットのヒット判定
+	void GameHitCheck(const double _time);
 
 	//敵のランダム配置
 	Enemy GenerateEnemy();
