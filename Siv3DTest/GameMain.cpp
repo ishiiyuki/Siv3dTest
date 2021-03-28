@@ -137,6 +137,10 @@ void GameMain::GameShotUpdate(const double _time)
             Vec2 setVec = setPos.movedBy(-300, 300);
             gameHomingBullet << HomingBullet(setPos, setVec, _nEnemy);
 
+            Vec2 setPos2 = gamePlayer.pos.movedBy(0, +50);
+            Vec2 setVec2 = setPos.movedBy(300, 300);
+            gameHomingBullet << HomingBullet(setPos2, setVec2, _nEnemy);
+
             playerHomingShotTimer = 0.0;
 
         }
